@@ -1,11 +1,543 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechMart ECommerce Store</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechMart E-Commerce Store</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f4f6f9;
+      color: #1f2937;
+      line-height: 1.5;
+    }
+
+    header {
+      background-color: #111827;
+      color: #ffffff;
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      font-size: 20px;
+      font-weight: bold;
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      color: #e5e7eb;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
+
+    .cart-btn {
+      background-color: #0284c7;
+      color: #ffffff;
+      border: none;
+      padding: 9px 14px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .cart-btn:hover {
+      background-color: #0369a1;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 18px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: #ffffff;
+      padding: 28px 24px;
+      border-radius: 10px;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: #dbeafe;
+      font-size: 15px;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .search-input {
+      flex: 1 1 240px;
+      padding: 10px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 14px;
+      background-color: #ffffff;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-btn {
+      padding: 8px 14px;
+      border: 1px solid #cbd5e1;
+      background-color: #ffffff;
+      color: #1f2937;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      background-color: #111827;
+      color: #ffffff;
+      border-color: #111827;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: bold;
+      background-color: #e0f2fe;
+      color: #0369a1;
+      padding: 3px 8px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+      width: fit-content;
+    }
+
+    .card h3 {
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: #475569;
+      margin-bottom: 14px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      gap: 10px;
+    }
+
+    .price {
+      font-size: 17px;
+      font-weight: bold;
+      color: #0f172a;
+    }
+
+    .add-btn {
+      background-color: #16a34a;
+      color: #ffffff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .add-btn:hover {
+      background-color: #15803d;
+    }
+
+    .cart-panel {
+      margin-top: 32px;
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .cart-panel h2 {
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+
+    .cart-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 14px;
+    }
+
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qty-btn {
+      width: 26px;
+      height: 26px;
+      border: 1px solid #cbd5e1;
+      background-color: #f8fafc;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .remove-btn {
+      background-color: #fee2e2;
+      color: #b91c1c;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .cart-footer {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .total-text {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .checkout-btn {
+      background-color: #111827;
+      color: #ffffff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .msg {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #15803d;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 16px;
+      font-size: 13px;
+      color: #64748b;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to TechMart E-Commerce Store</h1>
+  <header>
+    <div class="nav-wrap">
+      <a href="#top" class="brand">TechMart</a>
+      <nav class="nav-links">
+        <a href="#products">Products</a>
+        <a href="#cart-section">Cart</a>
+        <a href="2.html">Page 2</a>
+        <a href="3.html">Page 3</a>
+        <a href="4.html">Page 4</a>
+      </nav>
+      <button class="cart-btn" onclick="scrollToCart()">
+        Cart (<span id="cart-count">0</span>)
+      </button>
+    </div>
+  </header>
+
+  <main class="container" id="top">
+    <section class="hero">
+      <h1>Welcome to TechMart E-Commerce Store</h1>
+      <p>Everyday tech essentials, accessories, and gear at clear INR pricing.</p>
+    </section>
+
+    <section id="products">
+      <div class="controls">
+        <input
+          type="text"
+          id="search-input"
+          class="search-input"
+          placeholder="Search products (e.g., mouse, earbuds, stand)..."
+          oninput="renderProducts()"
+        />
+        <div class="filters" id="filter-buttons">
+          <button class="filter-btn active" data-cat="All" onclick="setCategory('All', this)">All</button>
+          <button class="filter-btn" data-cat="Audio" onclick="setCategory('Audio', this)">Audio</button>
+          <button class="filter-btn" data-cat="Accessories" onclick="setCategory('Accessories', this)">Accessories</button>
+          <button class="filter-btn" data-cat="Desk Setup" onclick="setCategory('Desk Setup', this)">Desk Setup</button>
+        </div>
+      </div>
+
+      <div class="grid" id="product-grid"></div>
+    </section>
+
+    <section class="cart-panel" id="cart-section">
+      <h2>Your Shopping Cart</h2>
+      <div id="cart-items"></div>
+      <div class="cart-footer">
+        <div class="total-text">Total: ₹<span id="cart-total">0</span></div>
+        <button class="checkout-btn" onclick="placeDemoOrder()">Place Demo Order</button>
+      </div>
+      <div class="msg" id="order-msg"></div>
+    </section>
+  </main>
+
+  <footer>
+    TechMart Storefront &bull; Hosted on GitHub Pages
+  </footer>
+
+  <script>
+    const products = [
+      {
+        id: 1,
+        name: "Wireless Bluetooth Earbuds",
+        category: "Audio",
+        price: 1299,
+        desc: "Clear sound, lightweight fit, and everyday calling support."
+      },
+      {
+        id: 2,
+        name: "Ergonomic Wireless Mouse",
+        category: "Accessories",
+        price: 699,
+        desc: "Smooth tracking and comfortable grip for long study or work hours."
+      },
+      {
+        id: 3,
+        name: "Aluminum Laptop Stand",
+        category: "Desk Setup",
+        price: 1099,
+        desc: "Raises screen height for better posture and airflow."
+      },
+      {
+        id: 4,
+        name: "USB-C Fast Charging Cable (1.5m)",
+        category: "Accessories",
+        price: 349,
+        desc: "Braided daily cable for phones, tablets, and power banks."
+      },
+      {
+        id: 5,
+        name: "Over-Ear Wired Headphones",
+        category: "Audio",
+        price: 949,
+        desc: "Zero-lag audio with soft ear cushions for classes and media."
+      },
+      {
+        id: 6,
+        name: "Extended Desk Mat",
+        category: "Desk Setup",
+        price: 549,
+        desc: "Non-slip base with plenty of room for keyboard and mouse."
+      }
+    ];
+
+    let selectedCategory = "All";
+    let cart = JSON.parse(localStorage.getItem("techmart_cart") || "[]");
+
+    function saveCart() {
+      localStorage.setItem("techmart_cart", JSON.stringify(cart));
+    }
+
+    function setCategory(cat, btnEl) {
+      selectedCategory = cat;
+      document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
+      btnEl.classList.add("active");
+      renderProducts();
+    }
+
+    function renderProducts() {
+      const query = document.getElementById("search-input").value.trim().toLowerCase();
+      const grid = document.getElementById("product-grid");
+
+      const filtered = products.filter((item) => {
+        const matchesCat = selectedCategory === "All" || item.category === selectedCategory;
+        const matchesQuery =
+          item.name.toLowerCase().includes(query) ||
+          item.desc.toLowerCase().includes(query) ||
+          item.category.toLowerCase().includes(query);
+        return matchesCat && matchesQuery;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = "<p>No matching products found.</p>";
+        return;
+      }
+
+      grid.innerHTML = filtered
+        .map(
+          (item) => `
+          <article class="card">
+            <div>
+              <span class="badge">${item.category}</span>
+              <h3>${item.name}</h3>
+              <p>${item.desc}</p>
+            </div>
+            <div class="price-row">
+              <span class="price">₹${item.price.toLocaleString("en-IN")}</span>
+              <button class="add-btn" onclick="addToCart(${item.id})">Add to Cart</button>
+            </div>
+          </article>
+        `
+        )
+        .join("");
+    }
+
+    function addToCart(id) {
+      const prod = products.find((p) => p.id === id);
+      if (!prod) return;
+
+      const existing = cart.find((c) => c.id === id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id: prod.id, name: prod.name, price: prod.price, qty: 1 });
+      }
+
+      document.getElementById("order-msg").textContent = "";
+      saveCart();
+      renderCart();
+    }
+
+    function changeQty(id, delta) {
+      const item = cart.find((c) => c.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter((c) => c.id !== id);
+      }
+      saveCart();
+      renderCart();
+    }
+
+    function removeItem(id) {
+      cart = cart.filter((c) => c.id !== id);
+      saveCart();
+      renderCart();
+    }
+
+    function renderCart() {
+      const itemsBox = document.getElementById("cart-items");
+      const countEl = document.getElementById("cart-count");
+      const totalEl = document.getElementById("cart-total");
+
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+      countEl.textContent = totalCount;
+      totalEl.textContent = totalPrice.toLocaleString("en-IN");
+
+      if (cart.length === 0) {
+        itemsBox.innerHTML = "<p>Your cart is empty. Add a product to get started.</p>";
+        return;
+      }
+
+      itemsBox.innerHTML = cart
+        .map(
+          (item) => `
+          <div class="cart-item">
+            <div>
+              <strong>${item.name}</strong> &mdash; ₹${item.price.toLocaleString("en-IN")} each
+            </div>
+            <div class="qty-controls">
+              <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
+              <span>${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+              <button class="remove-btn" onclick="removeItem(${item.id})">Remove</button>
+            </div>
+          </div>
+        `
+        )
+        .join("");
+    }
+
+    function placeDemoOrder() {
+      const msgEl = document.getElementById("order-msg");
+      if (cart.length === 0) {
+        msgEl.style.color = "#b91c1c";
+        msgEl.textContent = "Add at least one item before placing a demo order.";
+        return;
+      }
+      const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      msgEl.style.color = "#15803d";
+      msgEl.textContent = `Demo order recorded for ₹${totalPrice.toLocaleString("en-IN")}!`;
+    }
+
+    function scrollToCart() {
+      document.getElementById("cart-section").scrollIntoView({ behavior: "smooth" });
+    }
+
+    renderProducts();
+    renderCart();
+  </script>
 </body>
 </html>
