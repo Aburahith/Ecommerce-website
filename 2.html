@@ -3,179 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Products - TechMart Store</title>
+  <title>Products - TechMart E-Commerce Store</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #f4f6f9;
-      color: #1f2937;
-      line-height: 1.5;
-    }
-
-    header {
-      background-color: #111827;
-      color: #ffffff;
-      padding: 16px 24px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .brand {
-      font-size: 20px;
-      font-weight: bold;
-      color: #38bdf8;
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      font-size: 14px;
-    }
-
-    .nav-links a {
-      color: #e5e7eb;
-      text-decoration: none;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: #38bdf8;
-      font-weight: bold;
-    }
-
-    .cart-link {
-      background-color: #0284c7;
-      color: #ffffff;
-      text-decoration: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 24px auto;
-      padding: 0 18px;
-    }
-
-    .banner {
-      background: linear-gradient(135deg, #0f172a, #0369a1);
-      color: #ffffff;
-      padding: 24px;
-      border-radius: 10px;
-      margin-bottom: 22px;
-    }
-
-    .banner h1 {
-      font-size: 26px;
-      margin-bottom: 6px;
-    }
-
-    .banner p {
-      color: #e0f2fe;
-      font-size: 14px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      background-color: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .tag {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: bold;
-      background-color: #dcfce7;
-      color: #166534;
-      padding: 3px 8px;
-      border-radius: 999px;
-      margin-bottom: 10px;
-      width: fit-content;
-    }
-
-    .card h3 {
-      font-size: 17px;
-      margin-bottom: 6px;
-    }
-
-    .card p {
-      font-size: 13px;
-      color: #475569;
-      margin-bottom: 14px;
-    }
-
-    .bottom-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .price {
-      font-size: 17px;
-      font-weight: bold;
-      color: #0f172a;
-    }
-
-    .add-btn {
-      background-color: #16a34a;
-      color: #ffffff;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 13px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .add-btn:hover {
-      background-color: #15803d;
-    }
-
-    .toast {
-      margin-top: 16px;
-      font-size: 14px;
-      font-weight: bold;
-      color: #15803d;
-    }
-
-    footer {
-      text-align: center;
-      padding: 24px 16px;
-      font-size: 13px;
-      color: #64748b;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; background-color: #f4f6f9; color: #1f2937; line-height: 1.5; }
+    header { background-color: #111827; color: #ffffff; padding: 16px 24px; position: sticky; top: 0; z-index: 100; }
+    .nav-wrap { max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand { font-size: 20px; font-weight: bold; color: #38bdf8; text-decoration: none; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 16px; font-size: 14px; }
+    .nav-links a { color: #e5e7eb; text-decoration: none; }
+    .nav-links a:hover, .nav-links a.active { color: #38bdf8; font-weight: bold; }
+    .cart-link { background-color: #0284c7; color: #ffffff; text-decoration: none; padding: 9px 14px; border-radius: 6px; font-size: 14px; font-weight: bold; }
+    .cart-link:hover { background-color: #0369a1; }
+    .container { max-width: 1100px; margin: 24px auto; padding: 0 18px; }
+    .hero { background: linear-gradient(135deg, #0f172a, #1e3a8a); color: #ffffff; padding: 26px 24px; border-radius: 10px; margin-bottom: 22px; }
+    .hero h1 { font-size: 26px; margin-bottom: 6px; }
+    .hero p { color: #dbeafe; font-size: 14px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 18px; }
+    .card { background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; }
+    .badge { display: inline-block; font-size: 11px; font-weight: bold; background-color: #e0f2fe; color: #0369a1; padding: 3px 8px; border-radius: 999px; margin-bottom: 10px; width: fit-content; }
+    .card h3 { font-size: 17px; margin-bottom: 6px; }
+    .card p { font-size: 13px; color: #475569; margin-bottom: 14px; }
+    .price-row { display: flex; align-items: center; justify-content: space-between; margin-top: auto; gap: 10px; }
+    .price { font-size: 17px; font-weight: bold; color: #0f172a; }
+    .add-btn { background-color: #16a34a; color: #ffffff; border: none; padding: 8px 12px; border-radius: 6px; font-size: 13px; font-weight: bold; cursor: pointer; }
+    .add-btn:hover { background-color: #15803d; }
+    .msg { margin-top: 16px; font-size: 14px; color: #15803d; font-weight: bold; }
+    footer { text-align: center; padding: 24px 16px; font-size: 13px; color: #64748b; }
   </style>
 </head>
 <body>
@@ -185,8 +39,8 @@
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="2.html" class="active">Products</a>
-        <a href="3.html">Page 3</a>
-        <a href="4.html">Page 4</a>
+        <a href="3.html">About</a>
+        <a href="4.html">Contact</a>
       </nav>
       <a href="index.html#cart-section" class="cart-link">
         Cart (<span id="cart-count">0</span>)
@@ -195,101 +49,67 @@
   </header>
 
   <main class="container">
-    <section class="banner">
-      <h1>TechMart Product Catalog</h1>
-      <p>Browse featured items and add straight to your cart.</p>
+    <section class="hero">
+      <h1>More TechMart Products</h1>
+      <p>Add items here and view your total directly in the Home cart.</p>
     </section>
 
-    <section class="grid" id="catalog-grid"></section>
-    <div class="toast" id="toast-msg"></div>
+    <section class="grid" id="more-products"></section>
+    <div class="msg" id="add-msg"></div>
   </main>
 
   <footer>
-    Thank you for visiting TechMart Store &bull; Hosted on GitHub Pages
+    TechMart Storefront &bull; Hosted on GitHub Pages
   </footer>
 
   <script>
-    const catalogItems = [
-      {
-        id: 101,
-        name: "Compact Mechanical Keyboard",
-        tag: "Popular",
-        price: 1899,
-        desc: "Tactile keys with clean layout for coding and daily typing."
-      },
-      {
-        id: 102,
-        name: "7-in-1 USB-C Hub Adapter",
-        tag: "Value Pick",
-        price: 1199,
-        desc: "Extra USB ports, card reader, and display output in one hub."
-      },
-      {
-        id: 103,
-        name: "20,000mAh Fast Power Bank",
-        tag: "Travel Ready",
-        price: 1499,
-        desc: "High-capacity backup battery for long days outside."
-      },
-      {
-        id: 104,
-        name: "Adjustable Webcam / Phone Clip",
-        tag: "Desk Gear",
-        price: 499,
-        desc: "Sturdy mount for online calls, study setups, and desk angles."
-      }
+    const extraProducts = [
+      { id: 101, name: "Compact Mechanical Keyboard", category: "Desk Setup", price: 1899, desc: "Crisp key feedback for coding, typing, and daily desk work." },
+      { id: 102, name: "7-in-1 USB-C Hub Adapter", category: "Accessories", price: 1199, desc: "Extra USB ports and card slots for laptops and tablets." },
+      { id: 103, name: "20,000mAh Fast Power Bank", category: "Accessories", price: 1499, desc: "Reliable backup power for college days and travel." },
+      { id: 104, name: "Adjustable Phone & Cam Stand", category: "Desk Setup", price: 499, desc: "Steady angle adjustment for video calls and study notes." }
     ];
 
     function getCart() {
       return JSON.parse(localStorage.getItem("techmart_cart") || "[]");
     }
 
-    function updateCartBadge() {
-      const cart = getCart();
-      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
-      document.getElementById("cart-count").textContent = totalItems;
+    function syncBadge() {
+      const count = getCart().reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById("cart-count").textContent = count;
     }
 
-    function addCatalogItem(id) {
-      const item = catalogItems.find((p) => p.id === id);
-      if (!item) return;
-
+    function addExtra(id) {
+      const prod = extraProducts.find((p) => p.id === id);
+      if (!prod) return;
       const cart = getCart();
-      const existing = cart.find((c) => c.id === id);
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        cart.push({ id: item.id, name: item.name, price: item.price, qty: 1 });
-      }
-
+      const found = cart.find((c) => c.id === id);
+      if (found) found.qty += 1;
+      else cart.push({ id: prod.id, name: prod.name, price: prod.price, qty: 1 });
       localStorage.setItem("techmart_cart", JSON.stringify(cart));
-      updateCartBadge();
-      document.getElementById("toast-msg").textContent = `${item.name} added to cart!`;
+      syncBadge();
+      document.getElementById("add-msg").textContent = `${prod.name} added to cart!`;
     }
 
-    function renderCatalog() {
-      const grid = document.getElementById("catalog-grid");
-      grid.innerHTML = catalogItems
-        .map(
-          (item) => `
-          <article class="card">
-            <div>
-              <span class="tag">${item.tag}</span>
-              <h3>${item.name}</h3>
-              <p>${item.desc}</p>
-            </div>
-            <div class="bottom-row">
-              <span class="price">₹${item.price.toLocaleString("en-IN")}</span>
-              <button class="add-btn" onclick="addCatalogItem(${item.id})">Add to Cart</button>
-            </div>
-          </article>
-        `
-        )
-        .join("");
-    }
+    document.getElementById("more-products").innerHTML = extraProducts
+      .map(
+        (item) => `
+        <article class="card">
+          <div>
+            <span class="badge">${item.category}</span>
+            <h3>${item.name}</h3>
+            <p>${item.desc}</p>
+          </div>
+          <div class="price-row">
+            <span class="price">₹${item.price.toLocaleString("en-IN")}</span>
+            <button class="add-btn" onclick="addExtra(${item.id})">Add to Cart</button>
+          </div>
+        </article>
+      `
+      )
+      .join("");
 
-    renderCatalog();
-    updateCartBadge();
+    syncBadge();
   </script>
 </body>
 </html>
